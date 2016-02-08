@@ -6,19 +6,47 @@ import java.util.List;
  * 
  * @author stfciz
  *
- * 6 févr. 2016
+ *         6 févr. 2016
  */
 public class Services {
 
-  private List<String> items;
+	private List<String> items;
 
-  public List<String> getItems() {
-    return items;
-  }
+	private String source;
 
-  public Services withItems(List<String> items) {
-    this.items = items;
-    return this;
-  }
-  
+	/**
+	 * 
+	 * @param items
+	 * @return
+	 */
+	public Services withItems(List<String> items) {
+		this.items = items;
+		return this;
+	}
+	
+	/**
+	 * 
+	 * @param source
+	 * @return
+	 */
+	public Services withSource(String source) {
+		this.source = source;
+		return this;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public List<String> getItems() {
+		return items;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getSource() {
+		return source;
+	}
 }

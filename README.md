@@ -7,6 +7,11 @@
 * $JAVA_HOME/bin/java -Dserver.port=8080 -jar target/eureka-client-0.0.1-SNAPSHOT.jar
 * $JAVA_HOME/bin/java -Dserver.port=8082 -jar target/eureka-client-0.0.1-SNAPSHOT.jar
 
+You can specify a different service Id with -Dservice.id=myservice. By default, it's web.
+Enable a ping request with the profile "ping.enabled" 
+
+* $JAVA_HOME/bin/java -Dserver.port=8080 -jar target/eureka-client-0.0.1-SNAPSHOT.jar --spring.profiles.active=ping.enabled
+
 # Eureka tips
 
 ## Eureka Client - Ribbon
@@ -22,5 +27,6 @@ which are forwarded to the registry clients.
 see NIWSDiscoveryPing.java for more details.
 
 NIWSDiscoveryPing is instanciated in the EurekaRibbonClientConfiguration class if no other IPing class was previously instanciated.
-In this case, if the default behaviour is troublesome, a real Ping can be registred to do a real ping and discard the DOWN 
-servers in the load balancer servers list.
+In this case, if the default behaviour is troublesome, a real Ping can be registered to do a real ping but the Discovery update override it.
+
+Ensure the lease expiration be enabled.
