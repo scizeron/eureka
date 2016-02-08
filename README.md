@@ -31,12 +31,14 @@ Enable a ping request with the profile "ping.enabled"
 
 ----------
 
-* By default, No real ping, they just assume that the server is up if Discovery Client says. The status comes from the Euraka Server.
-* The eureka status is not in a "leaseExpirationEnabled" mode, when a service is shutdown, it is still marked as UP by Eureka Server and at the level client, if the host count is 2 for example, 
-we have the following sequence : ok, failed, ok, failed ...
-* When there are a several servers, the leaseExpirationEnabled is true and the failed server is removed, only the UP servers which are forwarded to the registry clients.
-*see NIWSDiscoveryPing.java for more details.
+* By default, no real ping is performed, they just assume that the server is up if Discovery Client says. The status comes from the Euraka Server.
+* If the eureka status is not in a "leaseExpirationEnabled" mode, so when a service is shutdown, it is still marked as UP by Eureka Server and at the level client.
+* if the initial number of instances is 2 for example and then 1, we have the following sequence : ok, ko, ok, ko ...
+* When there are several servers, the leaseExpirationEnabled is true and the dead instance is removed and only the UP instances are forwarded to the registry client.
 
-* NIWSDiscoveryPing is instanciated in the EurekaRibbonClientConfiguration class if no other IPing class was previously instanciated. In this case, if the default behaviour is troublesome, a real Ping can be registered to do a real ping but the Discovery update override it.
+* see NIWSDiscoveryPing.java for more details.
 
-* Ensure the lease expiration be enabled.
+* NIWSDiscoveryPing is instantiated in the EurekaRibbonClientConfiguration class if no other IPing class was previously instantiated. 
+* In this case, if this default behaviour is troublesome, a real Ping can be registered to do a real ping but the Discovery update override it and the expected outcome is not good.
+
+* Ensure the number of instaces is sufficient to allow the lease expiration be enabled.
