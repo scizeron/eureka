@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/scizeron/eureka.svg?branch=master)](https://travis-ci.org/scizeron/eureka)
+
 # Eureka Client - Ribbon tips
 
 ## Build
