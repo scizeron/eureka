@@ -4,10 +4,11 @@ server:
 spring:
   application:
     name: eureka
-    
+
 eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false
   server:
     waitTimeInMsWhenSyncEmpty: 0
+    renewalThresholdUpdateIntervalMs: 60000
